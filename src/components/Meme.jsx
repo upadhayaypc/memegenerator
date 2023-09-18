@@ -1,7 +1,20 @@
+import memesData from "../memesData";
+
 export default function Meme() {
+  const memesArray = memesData.data.memes;
+  const getRandomMeme = () => {
+    let randomIndex = Math.floor(Math.random() * 100);
+    if (!randomIndex) {
+      randomIndex = 0;
+    }
+    console.log(randomIndex);
+    let meme = memesArray[randomIndex];
+    return meme;
+  };
+
   return (
     <main>
-      <form className="form">
+      <div className="form">
         <input
           placeholder="Top Text"
           className="form--input"
@@ -12,8 +25,10 @@ export default function Meme() {
           className="form--input"
           type="text"
         ></input>
-        <button className="form--button">Get a new meme image 🖼</button>
-      </form>
+        <button onClick={getRandomMeme} className="form--button">
+          Get a new meme image 🖼
+        </button>
+      </div>
     </main>
   );
 }
